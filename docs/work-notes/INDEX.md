@@ -8,5 +8,4 @@
 
 ## 按日期浏览
 
-{随项目推进自动更新}
-
+- [2026-05-28 动力学动画库雏形搭建总结](01_ANIMATION_LIBRARY_BOOTSTRAP_SUMMARY_2026-05-28.md)
