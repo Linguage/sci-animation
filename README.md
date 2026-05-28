@@ -1,6 +1,16 @@
 # Mechanical Science Animations
 
-这是一个用 Manim 制作机械机构科普动画的基础框架。当前包含一个“曲柄摇杆机构”示例，结构上把机构几何求解和 Manim 动画场景分开。
+这是一个用 Manim 制作机械机构、振动与结构动力学科普动画的基础框架。当前包含曲柄摇杆机构、单自由度弹簧振子、三层剪切楼地震响应三个示例，结构上把力学/几何求解和 Manim 动画场景分开。
+
+## 文档与报告
+
+- [操作清单](c.md)：常用命令、结果路径、目录入口。
+- [依赖清单](DEPENDENCIES.md)：跨设备配置 Manim、TeX、`dvisvgm` 等依赖。
+- [项目蓝图](docs/specs/BLUEPRINT.md)：项目定位、技术路线和验收标准。
+- [架构说明](docs/specs/ARCHITECTURE.md)：模块边界、数据流和目录映射。
+- [路线图](docs/specs/ROADMAP.md)：当前阶段和后续 todo。
+- [报告索引](docs/reports/INDEX.md)：经验沉淀与专题报告入口。
+- [三个模拟动画的理论依据](docs/reports/simulation-theory-overview.md)：曲柄摇杆、弹簧振子、三层剪切楼的理论说明，并包含 GitHub 可直接查看的 GIF 预览。
 
 ## 安装
 
@@ -29,10 +39,12 @@ tlmgr --usermode install standalone preview
 
 如果缺的是 `dvisvgm` 这类二进制工具，请先确认安装方式，避免包管理器拉取完整 TeX 发行版。Manim 还可能需要 Cairo、Pango、ffmpeg 等系统依赖。
 
-## 渲染曲柄摇杆示例
+## 渲染示例
 
 ```bash
 manim -pqh scenes/crank_rocker.py CrankRockerScene
+manim -pqh scenes/spring_oscillator.py SpringOscillatorScene
+manim -pqh scenes/three_story_earthquake.py ThreeStoryEarthquakeScene
 ```
 
 常用质量参数：
@@ -48,11 +60,21 @@ manim -pqh scenes/crank_rocker.py CrankRockerScene
 ```text
 .
 ├── scenes/
-│   └── crank_rocker.py          # Manim 动画场景
+│   ├── crank_rocker.py
+│   ├── spring_oscillator.py
+│   └── three_story_earthquake.py
 ├── src/
 │   └── mechanisms/
 │       ├── __init__.py
-│       └── four_bar.py          # 四杆机构几何求解
+│       ├── four_bar.py
+│       ├── oscillator.py
+│       └── shear_building.py
+├── docs/
+│   ├── reports/
+│   └── specs/
+├── media/
+│   ├── previews/                # GitHub 报告中使用的 GIF 预览
+│   └── videos/                  # Manim 输出的最终 mp4
 ├── manim.cfg
 └── pyproject.toml
 ```
