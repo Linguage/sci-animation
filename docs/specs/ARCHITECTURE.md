@@ -9,7 +9,8 @@
 
 项目使用 Manim Community 生成机械、振动和结构动力学动画。核心思路是：
 
-- `src/mechanisms/` 目前负责机构几何、振动响应、结构动力学等轻量模型与示例求解。
+- `src/sci_animation/` 负责响应数据结构、教学模型、求解器、replay 读取和可复用 Manim 组件。
+- `src/mechanisms/` 保留为兼容层，继续支持旧的 `from mechanisms import ...` 导入方式。
 - `scenes/` 负责 Manim 视觉表达、动画节奏和标注。
 - `media/videos/` 存放最终 mp4；`media/previews/` 存放 GitHub 报告中直接展示的 GIF。
 - `docs/reports/` 负责沉淀理论依据、建模假设、可复用结论和动画说明。
@@ -18,12 +19,16 @@
 
 ## 2. 模块结构
 
-- `src/mechanisms/four_bar.py`：四杆机构配置、状态数据结构和圆交点求解。
-- `src/mechanisms/oscillator.py`：单自由度无阻尼自由振动解析解。
-- `src/mechanisms/shear_building.py`：三层剪切楼矩阵组装、Rayleigh 阻尼和 Newmark 时程积分。
+- `src/sci_animation/schemas/`：统一响应与几何状态数据结构。
+- `src/sci_animation/models/`：四杆机构、单自由度振子、剪切楼等教学模型。
+- `src/sci_animation/solvers/`：Newmark 等小型透明求解器。
+- `src/sci_animation/replay/`：外部仿真或实验结果读取与标准化。
+- `src/sci_animation/viz/`：时程图、实时读数、弹簧/墙/剪切楼等可复用 Manim 组件。
+- `src/mechanisms/`：兼容导出层。
 - `scenes/crank_rocker.py`：曲柄摇杆机构动画场景。
 - `scenes/spring_oscillator.py`：弹簧振子动画与位移/加速度时程。
 - `scenes/three_story_earthquake.py`：三层剪切楼地震响应动画。
+- `scenes/replay_time_response.py`：CSV replay 数据读取与时程响应动画。
 - `scenes/_helpers.py`：场景共享的渲染工具链检查。
 - `manim.cfg`：Manim 默认渲染配置。
 - `DEPENDENCIES.md`：跨设备依赖清单。
@@ -117,9 +122,16 @@ external simulation / experiment
 ├── scenes/
 │   ├── _helpers.py
 │   ├── crank_rocker.py
+│   ├── replay_time_response.py
 │   ├── spring_oscillator.py
 │   └── three_story_earthquake.py
 └── src/
+    ├── sci_animation/
+    │   ├── models/
+    │   ├── replay/
+    │   ├── schemas/
+    │   ├── solvers/
+    │   └── viz/
     └── mechanisms/
         ├── __init__.py
         ├── four_bar.py
