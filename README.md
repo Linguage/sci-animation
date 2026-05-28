@@ -1,6 +1,6 @@
 # Mechanical Science Animations
 
-这是一个用 Manim 制作机械机构、振动与结构动力学科普动画的基础框架。当前包含曲柄摇杆机构、单自由度弹簧振子、三层剪切楼地震响应三个示例，结构上把力学/几何求解和 Manim 动画场景分开。
+这是一个用 Manim 制作机械机构、振动、结构动力学与数值方法科普动画的基础框架。当前包含曲柄摇杆机构、单自由度弹簧振子、三层剪切楼地震响应、CSV replay、蒙特卡罗估计 pi 和高尔顿板示例，结构上把模型/数据处理和 Manim 动画场景分开。
 
 ## 文档与报告
 
@@ -11,6 +11,8 @@
 - [路线图](docs/specs/ROADMAP.md)：当前阶段和后续 todo。
 - [报告索引](docs/reports/INDEX.md)：经验沉淀与专题报告入口。
 - [三个模拟动画的理论依据](docs/reports/simulation-theory-overview.md)：曲柄摇杆、弹簧振子、三层剪切楼的理论说明，并包含 GitHub 可直接查看的 GIF 预览。
+- [蒙特卡罗方法动画说明](docs/reports/monte-carlo-method.md)：用面积比例和大数定律解释随机采样估计 pi 的动画表达。
+- [高尔顿板动画说明](docs/reports/galton-board.md)：用随机左右分岔解释二项分布与正态近似。
 
 ## 安装
 
@@ -45,6 +47,8 @@ tlmgr --usermode install standalone preview
 manim -pqh scenes/crank_rocker.py CrankRockerScene
 manim -pqh scenes/spring_oscillator.py SpringOscillatorScene
 manim -pqh scenes/three_story_earthquake.py ThreeStoryEarthquakeScene
+manim -pqh scenes/monte_carlo_pi.py MonteCarloPiScene
+manim -pqh scenes/galton_board.py GaltonBoardScene
 ```
 
 常用质量参数：
@@ -61,14 +65,19 @@ manim -pqh scenes/crank_rocker.py CrankRockerScene
 .
 ├── scenes/
 │   ├── crank_rocker.py
+│   ├── galton_board.py
+│   ├── monte_carlo_pi.py
+│   ├── replay_time_response.py
 │   ├── spring_oscillator.py
 │   └── three_story_earthquake.py
 ├── src/
-│   └── mechanisms/
-│       ├── __init__.py
-│       ├── four_bar.py
-│       ├── oscillator.py
-│       └── shear_building.py
+│   ├── mechanisms/              # 兼容导出层
+│   └── sci_animation/
+│       ├── models/
+│       ├── replay/
+│       ├── schemas/
+│       ├── solvers/
+│       └── viz/
 ├── docs/
 │   ├── reports/
 │   └── specs/

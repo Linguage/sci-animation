@@ -10,12 +10,16 @@
 ## 当前优先阅读
 
 - [`simulation-theory-overview.md`](simulation-theory-overview.md)：当前三个模拟动画的理论依据、建模假设与动画表达说明。
+- [`monte-carlo-method.md`](monte-carlo-method.md)：蒙特卡罗估计 pi 的概率依据、收敛特征与动画表达说明。
+- [`galton-board.md`](galton-board.md)：高尔顿板、二项分布和正态近似的动画表达说明。
 - `DEPENDENCIES.md`：当前 Manim + TeX 渲染链路的最小依赖说明。
 - `docs/specs/ARCHITECTURE.md`：机构求解与动画场景的分层边界。
 
 ## 专题经验沉淀
 
 - [`simulation-theory-overview.md`](simulation-theory-overview.md)：曲柄摇杆、弹簧振子、三层剪切楼地震响应的理论综述。
+- [`monte-carlo-method.md`](monte-carlo-method.md)：随机采样、面积比例和大数定律的可视化说明。
+- [`galton-board.md`](galton-board.md)：随机左右分岔如何形成钟形分布的可视化说明。
 
 ## 使用建议
 

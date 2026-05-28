@@ -20,7 +20,7 @@
 ## 2. 模块结构
 
 - `src/sci_animation/schemas/`：统一响应与几何状态数据结构。
-- `src/sci_animation/models/`：四杆机构、单自由度振子、剪切楼等教学模型。
+- `src/sci_animation/models/`：四杆机构、单自由度振子、剪切楼、蒙特卡罗采样、高尔顿板等教学模型。
 - `src/sci_animation/solvers/`：Newmark 等小型透明求解器。
 - `src/sci_animation/replay/`：外部仿真或实验结果读取与标准化。
 - `src/sci_animation/viz/`：时程图、实时读数、弹簧/墙/剪切楼等可复用 Manim 组件。
@@ -29,6 +29,8 @@
 - `scenes/spring_oscillator.py`：弹簧振子动画与位移/加速度时程。
 - `scenes/three_story_earthquake.py`：三层剪切楼地震响应动画。
 - `scenes/replay_time_response.py`：CSV replay 数据读取与时程响应动画。
+- `scenes/monte_carlo_pi.py`：蒙特卡罗方法估计 pi 的随机采样与收敛动画。
+- `scenes/galton_board.py`：高尔顿板随机分岔与二项分布动画。
 - `scenes/_helpers.py`：场景共享的渲染工具链检查。
 - `manim.cfg`：Manim 默认渲染配置。
 - `DEPENDENCIES.md`：跨设备依赖清单。
@@ -122,6 +124,8 @@ external simulation / experiment
 ├── scenes/
 │   ├── _helpers.py
 │   ├── crank_rocker.py
+│   ├── galton_board.py
+│   ├── monte_carlo_pi.py
 │   ├── replay_time_response.py
 │   ├── spring_oscillator.py
 │   └── three_story_earthquake.py
@@ -135,6 +139,8 @@ external simulation / experiment
     └── mechanisms/
         ├── __init__.py
         ├── four_bar.py
+        ├── galton_board.py
+        ├── monte_carlo.py
         ├── oscillator.py
         └── shear_building.py
 ```

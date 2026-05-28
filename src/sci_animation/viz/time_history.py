@@ -16,6 +16,7 @@ class TimeHistoryPlot(VGroup):
         x_length: float,
         y_length: float,
         y_range: tuple[float, float, float] | None = None,
+        x_label: str = "time",
     ):
         if len(channels) != len(colors):
             raise ValueError("channels and colors must have the same length.")
@@ -29,8 +30,9 @@ class TimeHistoryPlot(VGroup):
             max_value = max(response.max_abs(channels) * 1.15, 1.0e-6)
             y_range = (-max_value, max_value, max_value)
 
+        x_step = 2 if response.duration() <= 10 else response.duration() / 4
         self.axes = Axes(
-            x_range=(0, response.duration(), 2),
+            x_range=(0, response.duration(), x_step),
             y_range=y_range,
             x_length=x_length,
             y_length=y_length,
@@ -39,7 +41,11 @@ class TimeHistoryPlot(VGroup):
         )
         title_mob = MathTex(title, font_size=24)
         title_mob.next_to(self.axes, UP, buff=0.06)
-        x_label = Text("time", font_size=16, color=GREY_B).next_to(self.axes.x_axis, RIGHT, buff=0.08)
+        x_label_mob = Text(x_label, font_size=16, color=GREY_B).next_to(
+            self.axes.x_axis,
+            RIGHT,
+            buff=0.08,
+        )
 
         curves = [
             always_redraw(
@@ -65,4 +71,4 @@ class TimeHistoryPlot(VGroup):
 
         self.curves = VGroup(*curves)
         self.dots = VGroup(*dots)
-        super().__init__(self.axes, title_mob, x_label, self.curves, self.dots)
+        super().__init__(self.axes, title_mob, x_label_mob, self.curves, self.dots)

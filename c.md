@@ -12,6 +12,10 @@ manim -pqh scenes/spring_oscillator.py SpringOscillatorScene
 manim -ql scenes/three_story_earthquake.py ThreeStoryEarthquakeScene
 manim -pqh scenes/three_story_earthquake.py ThreeStoryEarthquakeScene
 manim -ql scenes/replay_time_response.py ReplayTimeResponseScene
+manim -ql scenes/monte_carlo_pi.py MonteCarloPiScene
+manim -pqh scenes/monte_carlo_pi.py MonteCarloPiScene
+manim -ql scenes/galton_board.py GaltonBoardScene
+manim -pqh scenes/galton_board.py GaltonBoardScene
 ```
 
 ## 依赖检查
@@ -41,6 +45,8 @@ PY
 - 弹簧振子低质量视频：`media/videos/spring_oscillator/480p15/SpringOscillatorScene.mp4`
 - 三层楼地震响应低质量视频：`media/videos/three_story_earthquake/480p15/ThreeStoryEarthquakeScene.mp4`
 - CSV replay 低质量视频：`media/videos/replay_time_response/480p15/ReplayTimeResponseScene.mp4`
+- 蒙特卡罗估计 pi 低质量视频：`media/videos/monte_carlo_pi/480p15/MonteCarloPiScene.mp4`
+- 高尔顿板低质量视频：`media/videos/galton_board/480p15/GaltonBoardScene.mp4`
 - Manim 缓存：`media/`
 
 ## 常看目录
